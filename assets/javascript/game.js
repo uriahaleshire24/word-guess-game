@@ -1,23 +1,27 @@
 //start
-const word = ["Lion King", "Aladdin", "Perter Pan", 
-"Frozen", "lilo & Stitch", "Bambi", 
-"Robin Hood", "Atlantis", "The Emperors New Groove",
-"Treasure Planet", "The Rescue Down Under", "Holes"];
+const word = ["lionking", "aladdin", "perterpan", 
+"frozen", "liloandstitch", "bambi", 
+"robinhood", "atlantis", "theemperorsnewgroove",
+"treasureplanet", "therescuedownunder", "holes"];
+console.log(word)
 
 var randNum = Math.floor(Math.random() * word.length);
 var chosenWord = word[randNum];
 var rightWord = [];
 var wrongWord = [];
 var underScore =[];
+/////
+var docUnderScore = document.getElementsByClassName("underscore");
+var docRightGuess = document.getElementsByClassName("rightGuess");
+var docWrongGuess = document.getElementsByClassName("wrongGuess");
 
-
-
+////////
 
 console.log(chosenWord);
 
 var generateUnderscore = () => {
-    for(var i = 0; i < chosenWord.length; 1++) {
-        underScore.push("_");
+    for(var i = 0; i < chosenWord.length; i++) {
+        underScore.push('_');
     }
     return underScore;
 }
@@ -28,9 +32,19 @@ document.addEventListener("keypress", (event) => {
     
         if(chosenWord.indexOf(keyword) > -1) {
             rightWord.push(keyword);
-            underScore[chosenWord.indexOf(keyword)] =keyword;
-        }
-        else(wrongWord.push(keyword);
+            
 
+            underScore[chosenWord.indexOf(keyword)] = keyword;
+            docUnderScore[0].innerHTML = underScore.join(' ');
+            // docRightGuess[0].innerHTML = rightWord;
+            if(underScore.join('') == chosenWord) {
+                alert("you win")
+            }
+        }
+        else{
+            wrongWord.push(keyword);
+            // docWrongGuess[0].innerHTML = wrongWord;
+        } 
 
 }); 
+docUnderScore[0].innerHTML = generateUnderscore().join(' ');
