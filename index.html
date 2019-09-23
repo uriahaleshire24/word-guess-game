@@ -7,25 +7,56 @@
         <!-- links  -->
         <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="stylesheet" href="./assets/css/reset.css">
-       
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
 
 
 
 <body>
 <div class= "container">
-        <header class= "header">
-            <h1>hangman</h1>
-                <br>
-            <h2>Disney movie edition:</h2>
-         </header>
-            <br>
-        <div id="underscore"></div>
-            <br>
-        <div id= "right-guess">right guess</div>
-            <br>
-        <div id= "wrong-guess">wrong guess</div>
-    </div> 
+        <div class="jumbotron">
+            <h1>Hangman</h1>
+            Guess the disney movie
+        </div>
+           
+            
+        <div class="panel panel-default">
+            <div class=:panel-heading>
+                <h3 class="panel-title">word to guess</h3>
+            </div>
+            <div class="panel-body">
+                <h2 id="wordToGuess">_ _ _ _ _ _ _</h2>
+            </div>
+        </div>
+
+         <div class="panel panel-default">
+             <div class="panel-body">
+                 Wrong guesses: <span id="wrongGuess"></span>
+             </div>
+         </div>
+        
+         <div class="panel panel-default">
+             <div class="panel-body">
+             Guesses left: <span id="nymGuesses"></span>
+             </div>
+         </div>
+       
+         <div class="panel panel-default">
+            <div class="panel-body">
+                Win counter: <span id="winCounter">0</span>
+            </div>
+        </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    loss counter: <span id="lossCounter">0</span>
+                </div>
+            </div>
+
+
+
+
+
     <script src="./assets/javascript/game.js"></script>
 
 </body>

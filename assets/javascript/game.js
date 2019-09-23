@@ -1,71 +1,106 @@
 //start
-var word = ["cars", "aladdin", "walle", "up", "ratatouille", 
-"frozen", "hercules", "bambi", "lionking", "brave",  
-"cinderella", "atlantis", "zootopia", "abugslife", "atlantis",
-"pinocchio", "pocahontas", "holes", "avengers", "brotherbear"];
-console.log(word)
+var doubleWord = ["a","b","c",
+"d","e","f",
+"g","h","i",
+"j","k","l",
+"m","n","o",
+"p","q","r",
+"s","t","u",
+"v","w","x",
+"y","z"]
 
+
+
+
+
+
+
+
+var movieBank = ["cars", "aladdin", "walle", "up", "ratatouille", "frozen", "hercules", "bambi", "lionking", "brave", "cinderella", "atlantis", "zootopia", "abugslife", "atlantis", "pinocchio", "pocahontas", "holes", "avengers", "brotherbear"];
 var chosenWord = "";
-
-var rightWord = [];
-var wrongWord = [];
-var underScore =[];
+var lettersInWord = "";
+var numBlanks = 0;
+var blankAndSuccesses = [];
+var wrongLetters = [];
+var winCount = 0;
+var loseCount = 0;
+var guessesLeft = 10 ;
+var rightGuessCounter = 0;
 /////
-var docUnderScore = document.getElementById("underscore");
-var docRightGuess = document.getElementById("rightGuess");
-var docWrongGuess = document.getElementById("wrongGuess");
+function reset(){
+    choesenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+    lettersInWord = chosenWord.split("");
+    numBlanks = lettersInWord.length;
+
+    letterGuessed = 0;
+    rightGuessCounter = 0;
+    guessesLeft = 10;
+    wrongLetters =[];
+    blankAndSuccesses=[];
+    doubleWord = ["a","b","c",
+    "d","e","f",
+    "g","h","i",
+    "j","k","l",
+    "m","n","o",
+    "p","q","r",
+    "s","t","u",
+    "v","w","x",
+    "y","z"];
+
+    test=false
+    startGame();
+}
+function startGame(){
+    choesenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+    lettersInWord = chosenWord.split("");
+    numBlanks = lettersInWord.length;
+
+    rightGuessCounter = 0;
+    guessesLeft = 10;
+    wrongLetters =[];
+    blankAndSuccesses=[];
+    doubleWord = ["a","b","c",
+    "d","e","f",
+    "g","h","i",
+    "j","k","l",
+    "m","n","o",
+    "p","q","r",
+    "s","t","u",
+    "v","w","x",
+    "y","z"];
+
+        for(var i = 0; i< numBlanks; i++){
+            blankAndSuccesses.push("_");
+            document.getElementById("wordToGuess").innerHTML = blankAndSuccesses;
+        }
+    document.getElementById('wordToGuess').innerHTML = blanksAndSuccesses.join(" ");
+    document.getElementById('numGuesses').innerHTML = guessesLeft;
+    document.getElementById('winCounter').innerHTML = winCount;
+    document.getElementById('lossCounter').innerHTML = loseCount;
+    document.getElementById('wrongGuesses').innerHTML = wrongLetters;
 
 ////////
-
-findWord();
-
-console.log(chosenWord);
-
-function generateUnderscore() {
-    if(underScore.length === 0){
-        for(var i = 0; i < chosenWord.length; i++) {
-            underScore.push(' _ ');
-            console.log("pushed: " + i);
-        }
-    }
-
-    
-    docUnderScore.textContent = underScore.join("");
-
-    // return underScore
-}
-//console.log(generateUnderscore());
-
-// generateUnderscore();
-// generateUnderscore();
-
-//This function finds a new word
-function findWord(){
-    var randNum = Math.floor(Math.random() * word.length);
-    chosenWord = word[randNum];
-
-    generateUnderscore();
+    console.log(chosenWord);
+    console.log(lettersInWord);
+    console.log(numBlanks);
+    console.log(blankAndSuccesses);
 }
 
-document.addEventListener("keypress", (event) => {
-    console.log(event.key)
-    var keyword = String.fromCharCode(event.keyCode);
-    
-        if(chosenWord.indexOf(keyword) > -1) {
-            rightWord.push(keyword);
-            
-            
-            underScore[chosenWord.indexOf(keyword)] = keyword;
-            docUnderScore[0].innerHTML = underScore.join(' ');
-            // docRightGuess[0].innerHTML = rightWord;
-            if(underScore.join('') == chosenWord) {
-                alert("you win")
+
+
+
+
+function compareLetters(userKey){
+        console.log("is it working");
+        if(chosenWord.indexOf(userKey) > -1){
+            for(var i = 0; i < numBlanks; i++){
+                if(lettersInWord[i] === userKey){
+                    rightGuessCounter++;
+                    blankAndSuccesses[i] = userKey
+                }
             }
         }
-        else{
-            wrongWord.push(keyword);
-            // docWrongGuess[0].innerHTML = wrongWord;
-        } 
+}
 
-}); 
-//docUnderScore.textContent = generateUnderscore();
+    
+   
